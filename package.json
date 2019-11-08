@@ -48,6 +48,8 @@
     "forky": "^1.1.0",
     "graphql": "^14.5.8",
     "morgan": "^1.9.1",
-    "password-generator": "^2.2.3"
+    "password-generator": "^2.2.3",
+    "pg": "^7.12.1",
+    "sequelize": "^5.21.2"
   }
 }
