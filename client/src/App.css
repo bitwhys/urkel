@@ -24,8 +24,8 @@ h1 {
     padding: 10px 25px;
 }
 .more:hover {
-    background-color: #FDD836;
+    background-color: #FF0844;
 }
 .more:active {
-    background-color: #FFEFA9;
+    background-color: rgba(255, 8, 68, 0.6);
 }
