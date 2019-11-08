@@ -1,6 +1,10 @@
 # Dependencies
 node_modules
 
+
+# local development
+.env.development
+
 # IDE files
 .vscode
 .idea
