@@ -1,11 +1,37 @@
 import path from "path"
+// import cors from "cors"
 import express from "express"
+import { ApolloServer, gql } from "apollo-server-express"
 import morgan from "morgan"
 import generatePassword from "password-generator"
 
 const DEV_MODE = process.env.NODE_ENV !== "production"
 const PORT = process.env.PORT || 5000
 const app = express()
+
+const schema = gql`
+  type Query {
+    me: User
+  }
+  type User {
+    username: String!
+  }
+`
+const resolvers = {
+  Query: {
+    me: () => ({
+      username: "George Bockari",
+    }),
+  },
+}
+
+// ---------- APOLLO ------------
+const server = new ApolloServer({
+  typeDefs: schema,
+  resolvers,
+})
+
+server.applyMiddleware({ app, path: "/graphql" })
 
 //  ---------- LOGGING ------------
 app.use(morgan("dev"))
@@ -46,7 +72,7 @@ if (!DEV_MODE) {
 }
 // ---------- GENERAL SETUP ------------
 app.listen(PORT)
-console.log(`Password generator listening on ${PORT}`)
+// console.log(`Password generator listening on ${PORT}`)
 
 // ---------- EXCEPTION HANDLING ------------
 process.on("uncaughtException", function(err) {
