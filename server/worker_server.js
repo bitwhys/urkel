@@ -22,7 +22,7 @@ app.get("/api/passwords", (req, res) => {
   DEV_MODE &&
     console.log(
       "--- DEBUG INFO: [/api/passwords] ---",
-      `cluster-worker: ${process.pid}`
+      `\ncluster-worker: ${process.pid}`
     )
 
   // Return them as json
@@ -32,16 +32,18 @@ app.get("/api/passwords", (req, res) => {
 })
 
 //  ---------- REACT APP ------------
-// Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, "../client/build")))
-/**
- * The catchall handler: for any request that doesn't
- * match one above, send back React's index.html file.
- */
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build/index.html"))
-})
-
+// only in production, we use cra dev server in development for HMR
+if (!DEV_MODE) {
+  // Priority serve any static files.
+  app.use(express.static(path.resolve(__dirname, "../client/build")))
+  /**
+   * The catchall handler: for any request that doesn't
+   * match one above, send back React's index.html file.
+   */
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client/build/index.html"))
+  })
+}
 // ---------- GENERAL SETUP ------------
 app.listen(PORT)
 console.log(`Password generator listening on ${PORT}`)

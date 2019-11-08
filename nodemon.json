@@ -1,6 +1,6 @@
 {
   "restartable": "rs",
-  "exec": "npx babel-node server",
+  "exec": "babel-node server",
   "ignore": [
     ".git",
     "client",
