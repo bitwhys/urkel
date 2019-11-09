@@ -15,7 +15,11 @@
     "start": "node --optimize_for_size --max_old_space_size=920 --gc_interval=100 dist",
     "start:dev": "stmux -w always -e 'ERROR|FAILED' -M -- [ [ 'heroku local -f Procfile-dev' .. 'yarn dev:ui' ] : zsh ]",
     "start:server": "node server",
-    "start:ui": "cd client && yarn start"
+    "start:ui": "cd client && yarn start",
+    "pregenerate": "babel-node server/utils/graphql/stitch-schema.js",
+    "postgenerate:rename": "mv server/tmp-resolvers server/_resolvers-helpers",
+    "codegen": "graphqlgen",
+    "generate": "yarn pregenerate && yarn codegen && yarn postgenerate:copy && yarn postgenerate:rename"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
@@ -23,6 +27,7 @@
     "@babel/node": "^7.7.0",
     "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
     "@babel/preset-env": "^7.7.1",
     "@types/express": "4.17.1",
     "babel-eslint": "^10.0.3",
@@ -34,6 +39,7 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "graphqlgen": "^0.6.0-rc9",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.18.2",
@@ -47,6 +53,8 @@
     "express": "^4.17.1",
     "forky": "^1.1.0",
     "graphql": "^14.5.8",
+    "graphql-import": "^0.7.1",
+    "graphql-tools": "^4.0.6",
     "morgan": "^1.9.1",
     "password-generator": "^2.2.3"
   }

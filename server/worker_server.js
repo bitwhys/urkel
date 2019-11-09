@@ -8,6 +8,7 @@ const DEV_MODE = process.env.NODE_ENV !== "production"
 const PORT = process.env.PORT || 5000
 const app = express()
 
+// ---------- GRAPHQL ------------
 const schema = gql`
   type Query {
     me: User
@@ -24,7 +25,6 @@ const resolvers = {
   },
 }
 
-// ---------- APOLLO ------------
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
@@ -35,7 +35,7 @@ server.applyMiddleware({ app, path: "/graphql" })
 //  ---------- LOGGING ------------
 app.use(morgan("dev"))
 
-// ---------- API ------------
+// ---------- REST API ------------
 app.get("/api/passwords", (req, res) => {
   const count = 5
 
@@ -59,7 +59,7 @@ app.get("/api/passwords", (req, res) => {
 //  ---------- REACT APP ------------
 // only in production, we use cra dev server in development for HMR
 if (!DEV_MODE) {
-  // Priority serve any static files.
+  // Priority, serve any static files.
   app.use(express.static(path.resolve(__dirname, "../client/build")))
   /**
    * The catchall handler: for any request that doesn't
@@ -71,9 +71,8 @@ if (!DEV_MODE) {
 }
 // ---------- GENERAL SETUP ------------
 app.listen(PORT)
-// console.log(`Password generator listening on ${PORT}`)
 
-// ---------- EXCEPTION HANDLING ------------
+// ---------- EXCEPTION HANDLING (EACH INSTANCE OF worker_server) ------------
 process.on("uncaughtException", function(err) {
   console.error(err)
   // tell the master we need to disconnect
