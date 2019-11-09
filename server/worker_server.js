@@ -1,5 +1,4 @@
 import path from "path"
-// import cors from "cors"
 import express from "express"
 import { ApolloServer, gql } from "apollo-server-express"
 import morgan from "morgan"
