@@ -8,8 +8,8 @@ export type Scalars = {
   Boolean: boolean,
   Int: number,
   Float: number,
-  /** 
- * Timestamp is serialized automatically when sent from our resolvers.
+  /**
+ * Timestamp is serialized automatically when sent from our resolversSetup.
    * It should be a JS timpestamp integer (i.e. the result of Date.now)
  **/
   Timestamp: any,
@@ -200,7 +200,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>;
 
-/** Mapping between all available schema types and the resolvers types */
+/** Mapping between all available schema types and the resolversSetup types */
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>,
   String: ResolverTypeWrapper<Scalars['String']>,
@@ -221,7 +221,7 @@ export type ResolversTypes = {
   TaskComment: ResolverTypeWrapper<TaskComment>,
 };
 
-/** Mapping between all available schema types and the resolvers parents */
+/** Mapping between all available schema types and the resolversSetup parents */
 export type ResolversParentTypes = {
   Query: {},
   String: Scalars['String'],

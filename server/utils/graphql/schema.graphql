@@ -1,4 +1,4 @@
-# Timestamp is serialized automatically when sent from our resolvers.
+# Timestamp is serialized automatically when sent from our resolversSetup.
 # It should be a JS timpestamp integer (i.e. the result of Date.now)
 scalar Timestamp
 

@@ -46,7 +46,7 @@ const Role = {
   },
 }
 
-export const resolvers = {
+export const resolversSetup = {
   Query,
   User,
   Permission,
