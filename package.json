@@ -17,9 +17,8 @@
     "start:server": "node server",
     "start:ui": "cd client && yarn start",
     "pregenerate": "babel-node server/utils/graphql/stitch-schema.js",
-    "postgenerate:rename": "mv server/tmp-resolvers server/_resolvers-helpers",
     "codegen": "graphqlgen",
-    "generate": "yarn pregenerate && yarn codegen && yarn postgenerate:copy && yarn postgenerate:rename"
+    "generate": "yarn pregenerate && yarn codegen"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
