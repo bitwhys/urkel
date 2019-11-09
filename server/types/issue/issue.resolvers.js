@@ -6,12 +6,12 @@ const defaultResolvers = {
   body: parent => (parent.body === undefined ? null : parent.body),
   priority: parent => parent.priority,
   status: parent => parent.status,
-  type: parent => parent.type,
+  category: parent => parent.category,
   tags: parent => (parent.tags === undefined ? null : parent.tags),
 }
 
 export const Issue = {
-  defaultResolvers,
+  ...defaultResolvers,
 
   creator: (parent, args, ctx) => {
     throw new Error("Resolver not implemented")

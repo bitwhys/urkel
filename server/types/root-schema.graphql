@@ -20,3 +20,7 @@ type Permission {
   level: Int!
   resourceID: ID
 }
+
+type Query {
+    user: User!
+}

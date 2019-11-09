@@ -1,5 +1,5 @@
 type Project implements Resource {
-  id: ID
+  id: ID!
   dateCreated: Timestamp!
   dateUpdated: Timestamp!
   creator: User!

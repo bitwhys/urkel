@@ -24,24 +24,12 @@ const Permission = {
   id: parent => parent.id,
   userID: parent => (parent.userID === undefined ? null : parent.userID),
   level: parent => parent.level,
-  resouceID: parent =>
+  resourceID: parent =>
     parent.resouceID === undefined ? null : parent.resouceID,
 }
 
 const Query = {
   user: (parent, args, ctx) => {
-    throw new Error("Resolver not implemented")
-  },
-}
-
-const Role = {
-  project: (parent, args, ctx) => {
-    throw new Error("Resolver not implemented")
-  },
-  user: (parent, args, ctx) => {
-    throw new Error("Resolver not implemented")
-  },
-  roletype: (parent, args, ctx) => {
     throw new Error("Resolver not implemented")
   },
 }
@@ -52,7 +40,6 @@ export const resolvers = {
   Permission,
   Issue,
   Project,
-  Role,
   Task,
   Comment,
   IssueComment,
