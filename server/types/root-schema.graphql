@@ -3,20 +3,20 @@
 scalar Timestamp
 
 schema {
-    query: Query
+  query: Query
 }
 
 interface Resource {
-    id: ID!
-    dateCreated: Timestamp!
-    dateUpdated: Timestamp!
-    creator: User!
-    userPermissions: Permission
+  id: ID!
+  dateCreated: Timestamp!
+  dateUpdated: Timestamp!
+  creator: User!
+  userPermissions: Permission
 }
 
 type Permission {
-    id: ID!
-    userID: ID
-    level: Int!
-    resourceID: ID
+  id: ID!
+  userID: ID
+  level: Int!
+  resourceID: ID
 }

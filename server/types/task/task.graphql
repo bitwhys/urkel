@@ -1,0 +1,11 @@
+type Task implements Resource{
+    id: ID!
+    dateCreated: Timestamp!
+    dateUpdated: Timestamp!
+    creator: User!
+    title: String!
+    body: String
+    parent: Issue!
+    completed: Boolean!
+    userPermissions: Permission
+}
