@@ -1,0 +1,38 @@
+enum CommentParentType {
+    ISSUE
+    TASK
+}
+
+union CParentType = Issue | Task
+interface Comment {
+    id: ID!
+    dateCreated: Timestamp!
+    dateUpdated: Timestamp!
+    creator: User!
+    body: String!
+    parent: CParentType
+    parentType: CommentParentType!
+    userPermissions: Permission
+}
+
+type IssueComment implements Resource & Comment {
+    id: ID!
+    dateCreated: Timestamp!
+    dateUpdated: Timestamp!
+    creator: User!
+    body: String!
+    parent: Issue!
+    parentType: CommentParentType!
+    userPermissions: Permission
+}
+
+type TaskComment implements Resource & Comment {
+    id: ID!
+    dateCreated: Timestamp!
+    dateUpdated: Timestamp!
+    creator: User!
+    body: String!
+    parent: Task!
+    parentType: CommentParentType!
+    userPermissions: Permission
+}

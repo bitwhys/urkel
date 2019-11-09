@@ -1,0 +1,11 @@
+# TODO: associate a User with 0..* Projects
+type User {
+  id: ID!
+  joinDate: Timestamp!
+  username: String!
+  email: String!
+  firstname: String!
+  lastname: String!
+  avatarUrl: String
+  bio: String
+}
