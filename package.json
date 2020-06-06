@@ -46,7 +46,7 @@
     "stmux": "^1.7.1"
   },
   "dependencies": {
-    "apollo-server": "^2.9.7",
+    "apollo-server": "^2.14.2",
     "apollo-server-express": "^2.9.7",
     "express": "^4.17.1",
     "forky": "^1.1.0",
